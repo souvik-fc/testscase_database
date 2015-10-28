@@ -1,7 +1,6 @@
 var fs = require("fs");
 var path = '/home/souvikjana/Desktop/Regression_testcase/';
 var link = 'f.js';
-//console.log("Going to read directory /tmp");
 var gg;
 
 nodee(path);
@@ -13,23 +12,21 @@ function nodee(path) {
             return console.error(err);
         }
         files.forEach(function(file) {
-            
+
             gg = path + file;
-          stats=fs.lstatSync(gg);
-                //console.log(stats);
-                
+            stats = fs.lstatSync(gg);
 
-                // Check file type
-                if (stats.isFile(gg)) {
-                    chart(gg, link);
-                    console.log(gg);
-                } else if (stats.isDirectory(gg)) {
-                    console.log(gg+'----------------------------');
-                    nodee(gg + '/');
+            // Check file type
+            if (stats.isFile(gg)) {
+                chart(gg, link);
+                console.log(gg);
+            } else if (stats.isDirectory(gg)) {
+                console.log(gg + '----------------------------');
+                nodee(gg + '/');
 
-                }
-            
-           // console.log(path + file);
+            }
+
+            // console.log(path + file);
         });
     });
 

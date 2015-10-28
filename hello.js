@@ -6,36 +6,35 @@ var content = fs.read('/home/souvikjana/Desktop/sum.json');
 var k;*/
 
 
-// EXAMPLE: Show a list of files in a specific directory as a fully qualified path:
+
 var fs = require('fs');
 var link = 'f.js';
 var path = '/home/souvikjana/Desktop/Regression_testcase/';
-// Get a list all files in directory
+
 traverse(path);
+
 function traverse(path) {
     var list = fs.list(path);
-    // Cycle through the list
+
     for (var x = 0; x < list.length; x++) {
-        // Note: If you didn't end path with a slash, you need to do so here.
-        var file = path +list[x];
-                //	console.log(file);
 
-        if(file==path+'.' || file==path+'..'){
-        	console.log(file);
-        	continue;
+        var file = path + list[x];
+        //  console.log(file);
 
-        }
-        else if (fs.isFile(file)) {
+        if (file == path + '.' || file == path + '..') {
+            console.log(file);
+            continue;
+
+        } else if (fs.isFile(file)) {
             // Do something
-           // console.log("yesssss");
-           console.log(file);
+            // console.log("yesssss");
+            console.log(file);
             chart(file, link);
-        } 
-        else if (fs.isDirectory(file)) {
-            console.log(file+'/');
-            traverse(file+'/');
-        } 
-       // console.log(path+'/.');
+        } else if (fs.isDirectory(file)) {
+            console.log(file + '/');
+            traverse(file + '/');
+        }
+        // console.log(path+'/.');
     }
 }
 //phantom.exit();
@@ -54,10 +53,10 @@ var a=[],b=[],str;
 var path = 'f.js';
 
 for(i in k)
-	{
-	 str=JSON.stringify(k[i]);
-	 fs.write(path,str, 'w');
-		}*/
+    {
+     str=JSON.stringify(k[i]);
+     fs.write(path,str, 'w');
+        }*/
 /*
 var path = 'f.js';
 var obj = a[0],newstr;
@@ -66,12 +65,12 @@ newstr="{"+"\n"+'"'+b[0]+'"'+":"+"{"+'\n';
 //console.log(typeof(obj));
 //for(i in a[0]){
    
-   	objfun(a[0]);
+    objfun(a[0]);
    
 
 
-//	newstr+='"'+i+'"'+":"+'"'+a[0][i].toString()+'"';
-//	newstr+='\n';
+//  newstr+='"'+i+'"'+":"+'"'+a[0][i].toString()+'"';
+//  newstr+='\n';
 //}
 
 newstr+="}"+'\n'+"}";
@@ -84,9 +83,9 @@ function objfun(ob){
 for(i in ob){
   
 console.log(ob);
-	newstr+='"'+i+'"'+":"+'"'+ob[i].toString()+'"';
-	newstr+='\n';
-	//objfun(ob[i]);
+    newstr+='"'+i+'"'+":"+'"'+ob[i].toString()+'"';
+    newstr+='\n';
+    //objfun(ob[i]);
    
 }
 }
@@ -101,7 +100,7 @@ function chart(file, link) {
     var k = JSON.parse(content);
     for (i in k) {
         var nn = JSON.stringify(k[i]);
-        str+=nn+',';
+        str += nn + ',';
         fs.write(link, str, 'w');
     }
 }
